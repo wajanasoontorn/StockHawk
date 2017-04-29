@@ -61,6 +61,15 @@ public final class PrefUtils {
         editStockPref(context, symbol, false);
     }
 
+    public static void setInvalidSymbolPref(Context context, String symbol) {
+        String key = context.getString(R.string.pref_invalid_symbol_key);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(key, symbol);
+        editor.apply();
+    }
+
     public static String getDisplayMode(Context context) {
         String key = context.getString(R.string.pref_display_mode_key);
         String defaultValue = context.getString(R.string.pref_display_mode_default);
