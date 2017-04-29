@@ -32,7 +32,9 @@
     <string name="error_invalid_symbol">Invalid symbol: %1$s</string>
 
     <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
-    <string name="toast_no_connectivity">Will refresh when network available.</string>
+    <string name="toast_no_connectivity_while_refreshing">Will refresh when network available.</string>
+    <string name="toast_no_connectivity">No network connectivity! Stocks might not be up to date.</string>
+
     <string name="title_activity_detail">DetailActivity</string>
 
 </resources>

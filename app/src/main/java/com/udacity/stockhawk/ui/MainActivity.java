@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             error.setVisibility(View.VISIBLE);
         } else if (!networkUp()) {
             swipeRefreshLayout.setRefreshing(false);
-            Toast.makeText(this, R.string.toast_no_connectivity, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toast_no_connectivity_while_refreshing, Toast.LENGTH_LONG).show();
         } else if (PrefUtils.getStocks(this).size() == 0) {
             swipeRefreshLayout.setRefreshing(false);
             error.setText(getString(R.string.error_no_stocks));
@@ -166,7 +166,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         if (data.getCount() != 0) {
             error.setVisibility(View.GONE);
+            if (!networkUp()) {
+                Toast.makeText(this, R.string.toast_no_connectivity, Toast.LENGTH_LONG).show();
+            }
         }
+
         adapter.setCursor(data);
     }
 
