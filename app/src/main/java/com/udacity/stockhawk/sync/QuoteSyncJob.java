@@ -105,6 +105,7 @@ public final class QuoteSyncJob {
                     quoteCVs.add(quoteCV);
                 } else {
                     Timber.e("Invalid symbol: " + symbol);
+                    PrefUtils.removeStock(context, symbol);
                     PrefUtils.setInvalidSymbolPref(context, symbol);
                 }
 
