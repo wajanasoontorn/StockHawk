@@ -82,8 +82,10 @@ public class StockRemoteViewsService extends RemoteViewsService {
                 if (PrefUtils.getDisplayMode(StockRemoteViewsService.this)
                         .equals(getString(R.string.pref_display_mode_absolute_key))) {
                     views.setTextViewText(R.id.change, change);
+                    views.setContentDescription(R.id.change, String.format(getString(R.string.a11y_price_change), change));
                 } else {
                     views.setTextViewText(R.id.change, percentage);
+                    views.setContentDescription(R.id.change, String.format(getString(R.string.a11y_price_change), percentage));
                 }
 
                 final String setBackgroundResource = "setBackgroundResource";
@@ -93,7 +95,9 @@ public class StockRemoteViewsService extends RemoteViewsService {
                     views.setInt(R.id.change, setBackgroundResource, R.drawable.percent_change_pill_red);
                 }
 
-                views.setTextViewText(R.id.price, NumberFormatUtils.getInstance().getDollarString(price));
+                String strPrice = NumberFormatUtils.getInstance().getDollarString(price);
+                views.setTextViewText(R.id.price, strPrice);
+                views.setContentDescription(R.id.price, String.format(getString(R.string.a11y_price), strPrice));
                 views.setTextViewText(R.id.symbol, symbol);
 
                 Intent fillInIntent = new Intent();

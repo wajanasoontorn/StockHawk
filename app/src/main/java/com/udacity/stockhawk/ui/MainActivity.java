@@ -185,10 +185,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     private void setDisplayModeMenuItemIcon(MenuItem item) {
-        if (PrefUtils.getDisplayMode(this)
-                .equals(getString(R.string.pref_display_mode_absolute_key))) {
+        if (PrefUtils.getDisplayMode(this).equals(getString(R.string.pref_display_mode_absolute_key))) {
+            item.setTitle(String.format(getString(R.string.a11y_button_change_display_mode), getString(R.string.a11y_display_mode_percentage)));
             item.setIcon(R.drawable.ic_percentage);
         } else {
+            item.setTitle(String.format(getString(R.string.a11y_button_change_display_mode), getString(R.string.a11y_display_mode_absolute)));
             item.setIcon(R.drawable.ic_dollar);
         }
     }

@@ -120,7 +120,6 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         minDate.setTimeInMillis((long) min.getX());
         maxDate.setTimeInMillis((long) max.getX());
 
-
         Line line = new Line(values).setColor(ContextCompat.getColor(this, R.color.chart_line)).setCubic(true);
         line.setHasLines(true);
         line.setHasPoints(false);
@@ -156,6 +155,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
 
         mChart.setLineChartData(lineChartData);
+        mChart.setContentDescription(String.format(getString(R.string.a11y_price_over_time), mSymbol));
     }
 
     @Override

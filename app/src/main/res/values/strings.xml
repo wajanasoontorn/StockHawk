@@ -35,4 +35,12 @@
 
     <string name="empty_widget_list">No data available.</string>
 
+    <string name="a11y_button_show_add_stock_content_description">Open dialog for add a new stock</string>
+    <string name="a11y_button_change_display_mode">Change display mode to %s mode button</string>
+    <string name="a11y_display_mode_absolute">absolute</string>
+    <string name="a11y_display_mode_percentage">percentage</string>
+    <string name="a11y_price_over_time">%s\'s prices over time chart</string>
+    <string name="a11y_price">Price: %s</string>
+    <string name="a11y_price_change">Price change: %s</string>
+
 </resources>
