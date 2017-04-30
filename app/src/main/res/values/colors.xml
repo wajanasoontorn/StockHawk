@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+
+    <color name="colorBackground">#303030</color>
+    <color name="colorText">#c1c1c1</color>
+
     <color name="material_blue_500">#2196F3</color>
     <color name="material_red_700">#D50000</color>
     <color name="material_green_700">#00C853</color>

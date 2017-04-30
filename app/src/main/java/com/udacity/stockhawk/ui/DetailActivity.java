@@ -1,7 +1,6 @@
 package com.udacity.stockhawk.ui;
 
 import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
@@ -10,7 +9,7 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 
 import com.udacity.stockhawk.R;
-import com.udacity.stockhawk.Utils;
+import com.udacity.stockhawk.utils.DateUtils;
 import com.udacity.stockhawk.data.Contract;
 
 import java.text.SimpleDateFormat;
@@ -135,12 +134,12 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         Axis axisX = new Axis();
         Axis axisY = new Axis();
 
-        int length = Utils.getMonthsDifference(minDate, maxDate);
+        int length = DateUtils.getMonthsDifference(minDate, maxDate);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(minDate.get(Calendar.YEAR), minDate.get(Calendar.MONTH), minDate.get(Calendar.DATE));
 
-        SimpleDateFormat format = new SimpleDateFormat("MMM-yy", Locale.getDefault());
+        SimpleDateFormat format = new SimpleDateFormat(DateUtils.getYearAndMonthFormat(), Locale.getDefault());
         calendar.set(minDate.get(Calendar.YEAR), minDate.get(Calendar.MONTH), 1);
         List<AxisValue> axisValues = new ArrayList<>();
 

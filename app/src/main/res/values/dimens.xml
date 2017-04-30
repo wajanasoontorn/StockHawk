@@ -1,3 +1,20 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
+
+    <dimen name="widget_margin">0dp</dimen>
+
+    <dimen name="widget_default_width">250dp</dimen>
+    <dimen name="widget_default_height">180dp</dimen>
+    <dimen name="widget_min_resize_width">220dp</dimen>
+    <dimen name="widget_min_resize_height">@dimen/widget_default_height</dimen>
+
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_large">12dp</dimen>
+    <dimen name="margin_extra_large">16dp</dimen>
+
+    <dimen name="float_button_elevation">6dp</dimen>
+    <dimen name="float_button_translation_z">12dp</dimen>
+    <dimen name="float_button_border_width">0dp</dimen>
+
 </resources>

@@ -18,7 +18,6 @@
     <string name="default_stocks_microsoft">MSFT</string>
     <string name="default_stocks_facebook">FB</string>
 
-
     <string name="action_change_units">@string/pref_display_mode_key</string>
 
 
@@ -34,6 +33,8 @@
     <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
     <string name="toast_no_connectivity_while_refreshing">Will refresh when network available.</string>
     <string name="toast_no_connectivity">No network connectivity! Stocks might not be up to date.</string>
+
+    <string name="empty_widget_list">No data available.</string>
 
     <string name="title_activity_detail">DetailActivity</string>
 
