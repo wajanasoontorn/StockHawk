@@ -1,9 +1,9 @@
 package com.udacity.stockhawk.ui;
 
 import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -37,6 +38,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     LineChart mChart;
 
     private static final int STOCK_LOADER = 0;
+    private static final float CHART_BOTTOM_OFFSET = 4;
     private String mSymbol;
 
     public static final String SYMBOL = "Symbol";
@@ -72,15 +74,15 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         if (data != null && data.moveToFirst()) {
             String raw = data.getString(Contract.Quote.POSITION_HISTORY);
             if (raw != null && !raw.isEmpty()) {
-                setChart(getPointValues(raw));
+                setChart(getEntries(raw));
             }
         }
     }
 
-    private List<Entry> getPointValues(String raw) {
+    private List<Entry> getEntries(String raw) {
         final int dateColumn = 0;
         final int priceColumn = 1;
-        List<Entry> values = new ArrayList<>();
+        List<Entry> entries = new ArrayList<>();
 
         try {
             String rows[] = raw.split("\\r?\\n");
@@ -89,23 +91,23 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
                 String columns[] = rows[i].split("\\s*,\\s*");
                 Date date = new Date(Long.parseLong(columns[dateColumn]));
                 Entry pointValue = new Entry(date.getTime(), Float.parseFloat(columns[priceColumn]));
-                values.add(pointValue);
+                entries.add(pointValue);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        Collections.sort(values, new EntryXComparator());
+        Collections.sort(entries, new EntryXComparator());
 
-        return values;
+        return entries;
     }
 
-    private void setChart(List<Entry> values) {
+    private void setChart(List<Entry> entries) {
         mChart.setContentDescription(String.format(getString(R.string.a11y_price_over_time), mSymbol));
         mChart.getDescription().setEnabled(false);
-        LineDataSet dataSet = new LineDataSet(values, "");
+        LineDataSet dataSet = new LineDataSet(entries, "");
         mChart.getLegend().setEnabled(false);
-        dataSet.setColor(Color.YELLOW);
+        dataSet.setColor(ContextCompat.getColor(this, R.color.chart_line));
         dataSet.setDrawCircles(false);
 
         LineData lineData = new LineData(dataSet);
@@ -121,9 +123,17 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         });
 
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextColor(Color.WHITE);
-        mChart.getAxisLeft().setTextColor(Color.WHITE);
-        mChart.getAxisRight().setEnabled(false);
+        xAxis.setTextColor(ContextCompat.getColor(this, R.color.chart_label));
+        xAxis.setTextSize(getResources().getDimension(R.dimen.chart_label_font_size_dp));
+
+        YAxis axisLeft = mChart.getAxisLeft();
+        axisLeft.setTextColor(ContextCompat.getColor(this, R.color.chart_label));
+        axisLeft.setTextSize(getResources().getDimension(R.dimen.chart_label_font_size_dp));
+
+        YAxis axisRight = mChart.getAxisRight();
+        axisRight.setTextColor(ContextCompat.getColor(this, R.color.chart_label));
+        axisRight.setTextSize(getResources().getDimension(R.dimen.chart_label_font_size_dp));
+        mChart.setExtraBottomOffset(CHART_BOTTOM_OFFSET);
 
         mChart.invalidate();
     }

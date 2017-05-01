@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     TextView error;
     private StockAdapter adapter;
 
+    public static final String ACTION_DISPLAY_MODE_CHANGED = "com.udacity.stockhawk.ACTION_DISPLAY_MODE_CHANGED";
+
     @Override
     public void onClick(String symbol) {
         Timber.d("Symbol clicked: %s", symbol);
@@ -210,6 +212,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             PrefUtils.toggleDisplayMode(this);
             setDisplayModeMenuItemIcon(item);
             adapter.notifyDataSetChanged();
+
+            Intent dataUpdatedIntent = new Intent(ACTION_DISPLAY_MODE_CHANGED);
+            sendBroadcast(dataUpdatedIntent);
+
             return true;
         }
         return super.onOptionsItemSelected(item);

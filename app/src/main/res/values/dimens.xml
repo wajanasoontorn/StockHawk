@@ -17,4 +17,6 @@
     <dimen name="float_button_translation_z">12dp</dimen>
     <dimen name="float_button_border_width">0dp</dimen>
 
+    <dimen name="chart_label_font_size_dp">4dp</dimen>
+
 </resources>

@@ -13,6 +13,7 @@ import android.widget.RemoteViews;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.sync.QuoteSyncJob;
 import com.udacity.stockhawk.ui.DetailActivity;
+import com.udacity.stockhawk.ui.MainActivity;
 
 /**
  * Created by wajanasoontorn on 4/29/17.
@@ -47,7 +48,8 @@ public class StockWidgetProvider extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        if (QuoteSyncJob.ACTION_DATA_UPDATED.equals(intent.getAction())) {
+        if (QuoteSyncJob.ACTION_DATA_UPDATED.equals(intent.getAction())
+                || MainActivity.ACTION_DISPLAY_MODE_CHANGED.equals(intent.getAction())) {
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
             int[] appWidgetIds = appWidgetManager.getAppWidgetIds(
                     new ComponentName(context, getClass()));
