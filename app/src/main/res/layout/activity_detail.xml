@@ -7,10 +7,10 @@
     android:layout_height="match_parent"
     tools:context="com.udacity.stockhawk.ui.DetailActivity">
 
-    <lecho.lib.hellocharts.view.LineChartView
+    <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart"
-        android:layout_margin="@dimen/margin_extra_large"
+        android:layout_margin="@dimen/margin_medium"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </FrameLayout>
