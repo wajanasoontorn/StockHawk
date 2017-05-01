@@ -74,7 +74,7 @@ public final class QuoteSyncJob {
                 String symbol = iterator.next();
 
                 Stock stock = quotes.get(symbol);
-                if (stock.isValid()) {
+                if (stock != null && stock.isValid()) {
                     StockQuote quote = stock.getQuote();
 
                     float price = quote.getPrice().floatValue();
