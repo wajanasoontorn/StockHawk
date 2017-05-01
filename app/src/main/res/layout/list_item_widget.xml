@@ -7,8 +7,8 @@
     android:layout_height="?android:attr/listPreferredItemHeightSmall"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/margin_extra_large"
-    android:paddingRight="@dimen/margin_extra_large">
+    android:paddingStart="@dimen/margin_extra_large"
+    android:paddingEnd="@dimen/margin_extra_large">
 
     <TextView
         android:id="@+id/symbol"
@@ -38,8 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/percent_change_pill_green"
-            android:paddingLeft="@dimen/margin_small"
-            android:paddingRight="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
             tools:text="100%"/>
     </LinearLayout>
 </LinearLayout>
